@@ -7,14 +7,18 @@
 // CWebApplication properties can be configured here.
 
 Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
+Yii::setPathOfAlias('chartjs', dirname(__FILE__).'/../extensions/chartjs');
 
 return array(
-	//'theme' => 'bootstrap',
+	'theme' => 'bootstrap',
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Web App1',
 
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload' => array(
+				'log',
+	            'chartjs'
+	        ),
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -38,15 +42,15 @@ return array(
 
 	// application components
 	'components'=>array(
-		'bootstrap'=>array(
-			'class'=>'bootstrap.components.Bootstrap',	
-		),
+		'bootstrap'=>array('class'=>'bootstrap.components.Bootstrap'),
+		'chartjs' => array('class' => 'chartjs.components.ChartJs'),
+		
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
 		// uncomment the following to enable URLs in path-format
-		
+		/*
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
@@ -55,7 +59,7 @@ return array(
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
-		
+		*/
 		'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 		),
